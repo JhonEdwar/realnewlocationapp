@@ -35,5 +35,8 @@
   "eslintConfig": {
     "extends": "universe/native"
   },
-  "private": true
+  "private": true,
+  "repository": "https://github.com/sotopro/realnewlocationapp.git",
+  "author": "Jhon Edwar <jhonedwar192@gmail.com>",
+  "license": "MIT"
 }
