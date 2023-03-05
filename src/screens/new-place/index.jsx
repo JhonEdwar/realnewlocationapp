@@ -26,7 +26,7 @@ const NewPlace = ({ navigation }) => {
         <Text style={styles.title}>Lugar</Text>
         <TextInput
           style={styles.input}
-          placeholder="Escribe el nombre del lugar"
+          placeholder="Escribe el nombre del lugaar"
           onChangeText={onHandlerChange}
           value={title}
         /> 
