@@ -1,10 +1,11 @@
-import { View, Text,TextInput, Button, ScrollView, ImageSelector} from "react-native";
-import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { addPlace } from "../../store/place.slice";
+import { View, Text, TextInput, Button, ScrollView } from "react-native";
+import { useDispatch } from "react-redux";
 
-import { styles } from "./styles";
+import { ImageSelector } from "../../components";
+import { addPlace } from "../../store/place.slice";
 import colors from "../../utils/colors";
+import { styles } from "./styles";
 
 const NewPlace = ({ navigation }) => {
   const [title, setTitle] = useState("");
@@ -19,9 +20,12 @@ const NewPlace = ({ navigation }) => {
     setTitle(text);
   };
 
+  const onImage = (uri) => {
+    console.warn(uri);
+  };
 
   return (
-<ScrollView style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>Lugar</Text>
         <TextInput
@@ -29,9 +33,10 @@ const NewPlace = ({ navigation }) => {
           placeholder="Escribe el nombre del lugaar"
           onChangeText={onHandlerChange}
           value={title}
-        /> 
+        />
+        <ImageSelector onImage={onImage} />
         <Button
-        disabled={title.length === 0}
+          disabled={title.length === 0}
           color={colors.primary}
           title="Guardar"
           onPress={onHandlerSubmit}
