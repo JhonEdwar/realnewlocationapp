@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, Text, TextInput, Button, ScrollView } from "react-native";
 import { useDispatch } from "react-redux";
 
-import { ImageSelector } from "../../components";
+import { ImageSelector, LocationSelector } from "../../components";
 import { addPlace } from "../../store/place.slice";
 import colors from "../../utils/colors";
 import { styles } from "./styles";
@@ -22,7 +22,11 @@ const NewPlace = ({ navigation }) => {
   };
 
   const onImage = (uri) => {
-    setImage(uri)
+    setImage(uri);
+  };
+
+  const onLocation = (location) => {
+    console.warn(location);
   };
 
   return (
@@ -36,6 +40,7 @@ const NewPlace = ({ navigation }) => {
           value={title}
         />
         <ImageSelector onImage={onImage} />
+        <LocationSelector onLocation={onLocation} />
         <Button
           disabled={title.length === 0}
           color={colors.primary}
