@@ -10,10 +10,11 @@ import { styles } from "./styles";
 const NewPlace = ({ navigation }) => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
+  const [coords, setCoords] = useState(null);
   const dispatch = useDispatch();
 
   const onHandlerSubmit = () => {
-    dispatch(addPlace({ title, image }));
+    dispatch(addPlace({ title, image, coords }));
     navigation.goBack();
   };
 
@@ -26,7 +27,7 @@ const NewPlace = ({ navigation }) => {
   };
 
   const onLocation = (location) => {
-    console.warn(location);
+    setCoords(location);
   };
 
   return (
