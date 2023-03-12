@@ -7,3 +7,8 @@ export const URL_MAPS = (
   &markers=color:blue%7Clabel:S%7C${lat},${lng}&key=${API_KEY_MAPS}`;
 
   
+
+  export const URL_GEOCODING = (
+    lat,
+    lng,
+  ) => `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${API_KEY_MAPS}`;

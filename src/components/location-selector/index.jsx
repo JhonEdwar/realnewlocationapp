@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import * as Location from "expo-location";
 import { useState } from "react";
 import { View, Button, Text, Alert } from "react-native";
@@ -7,6 +8,7 @@ import MapPreview from "../map-preview";
 import { styles } from "./styles";
 
 const LocationSelector = ({ onLocation }) => {
+  const navigation = useNavigation();
   const [pickedLocation, setPickedLocation] = useState(null);
 
   const verifyPermissions = async () => {
@@ -30,13 +32,22 @@ const LocationSelector = ({ onLocation }) => {
     setPickedLocation({ lat: latitude, lng: longitude });
     onLocation({ lat: latitude, lng: longitude });
   };
+
+  const onHandlerMapsLocation = async () => {
+    await onHandleGetLocation(true);
+    navigation.navigate("Maps", { coords: pickedLocation });
+  };
   return (
     <View style={styles.container}>
       <MapPreview location={pickedLocation} style={styles.preview}>
         <Text style={styles.text}>No hay ubicacion seleccionada</Text>
       </MapPreview>
       <Button title="Seleccionar ubicacion" onPress={onHandleGetLocation} color={colors.primary} />
-      <Button title="Seleccionar desde el mapa" onPress={() => null} color={colors.primary} />
+      <Button
+        title="Seleccionar desde el mapa"
+        onPress={onHandlerMapsLocation}
+        color={colors.primary}
+      />
     </View>
   );
 };
